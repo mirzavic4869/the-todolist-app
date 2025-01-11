@@ -41,10 +41,10 @@ export default function ItemCard({ id, title, getAllItem }) {
   return (
     <div
       data-cy="item-card"
-      className="bg-white shadow-lg rounded-xl p-6 md:p-8 w-full"
+      className="w-full p-6 bg-white shadow-lg rounded-xl md:p-8"
     >
-      <div className="flex flex-row justify-between items-center text-lg md:text-xl">
-        <div className="flex flex-row gap-3 md:gap-4 items-center">
+      <div className="flex flex-row items-center justify-between text-lg md:text-xl">
+        <div className="flex flex-row items-center gap-3 md:gap-4">
           <input
             type="checkbox"
             checked={!isActive}
@@ -54,8 +54,10 @@ export default function ItemCard({ id, title, getAllItem }) {
               updateStatus(id)
             }}
           />
-          <div className="bg-orange-400 w-3 h-3 rounded-full"></div>
-          <h1 className="font-semibold">{title}</h1>
+          <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
+          <h1 className={`font-semibold ${!isActive && 'line-through'}`}>
+            {title}
+          </h1>
           <FaPencilAlt color="#A4A4A4" />
         </div>
         <FaTrashAlt onClick={() => deleteItem(id, title)} color="#888888" />
